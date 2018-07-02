@@ -1,0 +1,37 @@
+{
+    "customer": {
+        "first_name": "John",
+        "last_name": "Doe"
+    },
+    "items": [
+        {
+            "id": 17437,
+            "name": "Old Mother Hubbard Classic Crunchy Natural Dog Treats",
+            "thumbnail": "images/17437.jpg",
+            "unit_price": 8.26,
+            "quantity": 5
+        },
+        {
+            "id": 75639,
+            "name": "Accoutrements Horse Head Mask",
+            "thumbnail": "images/75639.jpg",
+            "unit_price": 29.95,
+            "quantity": 2
+        },
+        {
+            "id": 58364,
+            "name": "How To Avoid Huge Ships (Paperback)",
+            "thumbnail": "images/58364.gif",
+            "unit_price": 91.99,
+            "quantity": 1
+        },
+        {
+            "id": 64528,
+            "name": "Hutzler 571 Banana Slicer",
+            "thumbnail": "images/64528.jpg",
+            "unit_price": 5.89,
+            "quantity": 7
+        }
+    ],
+    "sales_tax": 8.5
+}
