@@ -1,33 +1,43 @@
-var webpack = require('webpack');
-var path = require('path');
+const path = require("path");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack');
 
-var BUILD_DIR = path.resolve(__dirname, 'client/dist');
-var APP_DIR = path.resolve(__dirname, 'client/src');
-
-var config = {
-    entry: APP_DIR + '/main.jsx',
-    module: {
-        loaders: [
-        {
-            test: /\.jsx?/,
-            include: APP_DIR,
-            loader: 'babel-loader',
-            query: {
-                presets: ['es2015', 'react']
-            }
+module.exports = {
+  entry: ['./client/src/index.js', './client/src/styles/main.scss'],
+  output: {
+    filename: 'bundle.js',
+    publicPath: '/client/dist/',
+    path: path.resolve(__dirname, './client/dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss/,
+        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: ["react", "stage-0", "es2015"],
+          plugins: ["transform-class-properties", "transform-decorators-legacy"]
         }
-        ]
-    },
-    output: {
-        path: BUILD_DIR,
-        publicPath: '/client/dist/',
-        filename: 'bundle.js'
-    },
-    devServer: {
-        host: '0.0.0.0',
-        port: 8000,
-        disableHostCheck: true
-    }
+      }
+    ]
+  },
+  devServer: {
+    // contentBase: './public/',
+    host: '0.0.0.0',
+    port: 8000,
+    disableHostCheck: true
+  },
+  plugins: [
+    new ExtractTextPlugin("bundle.css"),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    new webpack.optimize.UglifyJsPlugin()
+  ]
 };
-
-module.exports = config;
