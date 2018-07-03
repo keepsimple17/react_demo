@@ -32,16 +32,16 @@ export default class Item extends Component {
       quantity: quantity,
       price: price,
       brand: brandName
-    }
+    };
 
     this.setState({
       quantity: 1
-    })
+    });
 
     const syncCatalog = {
       item: productName,
       quantity: quantity
-    }
+    };
 
     this.props.dispatch(addToCart(itemDetails));
     this.props.dispatch(syncQuantity(syncCatalog));
