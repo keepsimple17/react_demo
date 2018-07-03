@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { removeItem } from './../actions/cartActions';
 import { syncQuantity } from './../actions/catalogActions';
 
-@connect((store) => {   
+@connect((store) => {
   return {
     itemsList: store.cart
   }
